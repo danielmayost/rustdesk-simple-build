@@ -29,5 +29,3 @@ mv ./target/release/rustdesk-portable-packer.exe ../output/rustdesk.exe -Force;
 
 # send the compiled project to host
 Copy-Item ./** C:/src-rustdesk -Recurse -Force;
-
-powershell;

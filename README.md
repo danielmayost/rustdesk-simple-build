@@ -3,6 +3,10 @@
 
 In this repository I tried to simplify the process as much as possible so that it is possible to make changes in the code or in the configurations and compile without messing with all the dependencies and things around.
 
+The only tool that needs to be installed is **Docker**.
+
+Currently, it only compiles for Windows-x64, which is the most useful.
+
 ## How it works?
 **The process is divided into two stages:**
 
@@ -16,7 +20,9 @@ Unfortunately, the compilation cannot be done when the source code is connected 
 ## Usage
 **Note**: Please use Powershell, Otherwise, the commands will not execute properly.
 
-Go to the folder you want to clone Rustdesk and use Powershell to run the following commands:
+1. Start docker and **switch to Windows containers**.
+
+2. Go to the folder you want to clone Rustdesk and use Powershell to run the following commands:
 ```
 git clone https://github.com/danielmayost/rustdesk-simple-build.git
 cd rustdesk-simple-build
@@ -25,12 +31,26 @@ cd Windows-x64
 ./build
 ```
 
-Then make changes to the code and run the following command:
+3. Then make changes to the code and run the following command:
 ```
 ./compile
 ```
 
-The output will be in the output folder.
+4. The output will be in the output folder.
+
+### Configration
+
+
+### Netfree
+If you are Netfree user (some Internet filter in our county) please run this build command:
+```
+./build -netfree
+```
+
+If you run the `./build` command before without `-netfree` flag, you need to run this command:
+```
+./build -netfree -nocache
+```
 
 ### Troubleshooting
 

@@ -35,12 +35,15 @@ RUN Invoke-WebRequest "https://github.com/git-for-windows/git/releases/download/
     Remove-Item Git-Installer.exe;
 
 # install python
-RUN Invoke-WebRequest 'https://www.python.org/ftp/python/$env:PYTHON_VERSION/python-$env:PYTHON_VERSION-amd64.exe' -OutFile 'python-installer.exe'; \
+RUN Invoke-WebRequest "https://www.python.org/ftp/python/$env:PYTHON_VERSION/python-$env:PYTHON_VERSION-amd64.exe" -OutFile 'python-installer.exe'; \
     Start-Process python-installer.exe -ArgumentList '/quiet InstallAllUsers=0 PrependPath=1' -Wait; \
     Remove-Item python-installer.exe; \
     $env:PATH += ';c:/users/ContainerAdministrator/appdata/local/programs/python/Python312;c:/users/ContainerAdministrator/appdata/local/programs/python/Python312/Scripts'; \
     # configure netfree cert for pip
-    pip config set global.cert "C:\netfree-ca.crt";
+    if ( $env:NETFREE -eq 'true' ) \
+    { \
+        pip config set global.cert "C:\netfree-ca.crt"; \
+    }
 
 # install msvc
 RUN Invoke-WebRequest 'https://aka.ms/vs/17/release/vs_buildtools.exe' -OutFile 'vs_buildtools.exe'; \
@@ -58,7 +61,7 @@ RUN Invoke-WebRequest "https://github.com/llvm/llvm-project/releases/download/ll
     [Environment]::SetEnvironmentVariable('LIBCLANG_PATH', 'C:/program files/llvm/bin', 'Machine');
 
 #install flutter
-RUN Invoke-WebRequest 'https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_$env:FLUTTER_VERSION-stable.zip' -OutFile 'flutter_windows.zip'; \
+RUN Invoke-WebRequest "https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_$env:FLUTTER_VERSION-stable.zip" -OutFile 'flutter_windows.zip'; \
     Expand-Archive -Path flutter_windows.zip -Destination .; \
     Remove-Item flutter_windows.zip; \
     $env:PATH += ';C:\flutter\bin'; \
