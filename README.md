@@ -56,8 +56,9 @@ If you run the `./build` command before, without `-netfree` flag, you need to ru
 ./build -netfree -nocache
 ```
 
-### Troubleshooting
+## Troubleshooting
 If you encounter errors during the image build or compilation, verify the following:
 
 1. Make sure docker is configured on Windows container.
 2. The script tries to trace the [flutter-build.yml](https://github.com/rustdesk/rustdesk/blob/master/.github/workflows/flutter-build.yml) file in the rustdesk project, make sure that the versions of the dependencies in the file match the dependencies in the Dockerfile, if not, change them.
+3. If you did a git pull to the source code, the dependencies may have changed, just rebuild the image container by `./build`.
