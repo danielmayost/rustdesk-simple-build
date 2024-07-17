@@ -39,15 +39,19 @@ cd Windows-x64
 4. The output will be in the output folder.
 
 ### Configration
-
+If you want to define your ID_Server as default or your Public_Key, you can set the Environment variable within the container, for do that, insert this lines in the `compile.bat` file before the `-v` flags:
+```
+-e RENDEZVOUS_SERVER=YOUR_SERVER ^
+-e RS_PUB_KEY=control-YOUR_PUB_KEY ^
+```
 
 ### Netfree
-If you are Netfree user (some Internet filter in our county) please run this build command:
+If you are Netfree user (some Internet censorship in our county) please run this build command:
 ```
 ./build -netfree
 ```
 
-If you run the `./build` command before without `-netfree` flag, you need to run this command:
+If you run the `./build` command before, without `-netfree` flag, you need to run this command:
 ```
 ./build -netfree -nocache
 ```
