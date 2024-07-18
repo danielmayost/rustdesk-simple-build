@@ -15,7 +15,7 @@ First, a Windows docker image is built with all the configuration dependencies n
 In the second step, we run the docker image with Rustdesk compilation instructions. 
 
 ### Local compilation
-Unfortunately, the compilation cannot be done when the source code is connected to the container by Bind mounts, `cargo` encounters many errors in this situation, therefore the source code is copied into the container and there the compilation takes place, after which the files are transferred back to the source folder.
+Unfortunately, the compilation cannot be done when the source code is connected to the container by Bind mounts, `cargo` encounters many errors in this situation, therefore the source code is copied every time into the container and there the compilation takes place.
 
 ## Usage
 **Note**: Please use Powershell, Otherwise, the commands will not execute properly.
@@ -26,6 +26,7 @@ Unfortunately, the compilation cannot be done when the source code is connected 
 ```
 git clone https://github.com/danielmayost/rustdesk-simple-build.git
 cd rustdesk-simple-build
+git checkout 5c16a8302e6c9c1381873aff45dba1487ee51d4f
 git clone https://github.com/rustdesk/rustdesk.git
 cd Windows-x64
 ./build
@@ -61,4 +62,4 @@ If you encounter errors during the image build or compilation, verify the follow
 
 1. Make sure docker is configured on Windows container.
 2. The script tries to trace the [flutter-build.yml](https://github.com/rustdesk/rustdesk/blob/master/.github/workflows/flutter-build.yml) file in the rustdesk project, make sure that the versions of the dependencies in the file match the dependencies in the Dockerfile, if not, change them.
-3. If you did a git pull to the source code, the dependencies may have changed, just rebuild the image container by `./build`.
+3. If you did a git pull to the source code, the dependencies may have changed, just change the RUSTDESK_COMMIT in `Dockerfile` and rebuild the image by `./build`.

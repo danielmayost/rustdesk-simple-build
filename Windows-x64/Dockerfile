@@ -7,6 +7,8 @@ ENV FLUTTER_VERSION=3.19.6
 ENV VCPKG_COMMIT=f7423ee180c4b7f40d43402c2feb3859161ef625
 ENV FLUTTER_RUST_BRIDGE_VERSION=1.80.1
 
+ENV RUSTDESK_COMMIT=5c16a8302e6c9c1381873aff45dba1487ee51d4f
+
 ARG NETFREE=false
 
 # configure powershell
@@ -89,7 +91,7 @@ RUN git clone https://github.com/rustdesk-org/RustDeskTempTopMostWindow RustDesk
 
 # clone rustdesk for some restore and cache operations
 RUN git clone https://github.com/rustdesk/rustdesk.git; \
-    cd rustdesk; \
+    cd rustdesk; git checkout $env:RUSTDESK_COMMIT; \
     Push-Location flutter; flutter pub get; Pop-Location; \
     . $env:VCPKG_ROOT/vcpkg.exe install --triplet x64-windows-static --x-install-root=""$env:VCPKG_ROOT/installed""; \
     ~/.cargo/bin/flutter_rust_bridge_codegen --rust-input ./src/flutter_ffi.rs --dart-output ./flutter/lib/generated_bridge.dart; \

@@ -1,5 +1,5 @@
 $ErrorActionPreference = 'Stop';
-$ProgressPreference = 'SilentlyContinue';
+$ProgressPreference = 'SilentlyContinue';\
 
 # copy project
 Copy-Item C:/src-rustdesk/** . -Recurse -Force;
@@ -26,6 +26,3 @@ pip install -r requirements.txt;
 python ./generate.py -f ../../rustdesk/ -o . -e ../../rustdesk/rustdesk.exe;
 popd;
 mv ./target/release/rustdesk-portable-packer.exe ../output/rustdesk.exe -Force;
-
-# return the project to the host
-Copy-Item ./** C:/src-rustdesk -Recurse -Force;
