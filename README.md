@@ -36,7 +36,7 @@ cd Windows-x64
 ./compile
 ```
 
-4. The output will be in the output folder.
+4. The output will be in the `output` folder.
 
 ### Configration
 If you want to define your ID_Server as default or your Public_Key, you can set the Environment variable within the container, for do that, insert this lines in the `compile.bat` file before the `-v` flags:
@@ -51,7 +51,7 @@ If you are Netfree user (some Internet censorship in our county) please run this
 ./build -netfree
 ```
 
-If you run the `./build` command before, without `-netfree` flag, you need to run this command:
+If you run the `./build` command before without `-netfree` flag, you need to run this command:
 ```
 ./build -netfree -nocache
 ```

@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop';
 $ProgressPreference = 'SilentlyContinue';
 
-# clone project
+# copy project
 Copy-Item C:/src-rustdesk/** . -Recurse -Force;
 
 # init cargo and flutter
@@ -27,5 +27,5 @@ python ./generate.py -f ../../rustdesk/ -o . -e ../../rustdesk/rustdesk.exe;
 popd;
 mv ./target/release/rustdesk-portable-packer.exe ../output/rustdesk.exe -Force;
 
-# send the compiled project to host
+# return the project to the host
 Copy-Item ./** C:/src-rustdesk -Recurse -Force;
