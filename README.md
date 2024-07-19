@@ -26,9 +26,10 @@ Unfortunately, the compilation cannot be done when the source code is connected 
 ```
 git clone https://github.com/danielmayost/rustdesk-simple-build.git
 cd rustdesk-simple-build
-git checkout 5c16a8302e6c9c1381873aff45dba1487ee51d4f
 git clone https://github.com/rustdesk/rustdesk.git
-cd Windows-x64
+cd rustdesk
+git checkout 5c16a8302e6c9c1381873aff45dba1487ee51d4f
+cd ../Windows-x64
 ./build
 ```
 
