@@ -55,7 +55,7 @@ If you are Netfree user (some Internet censorship in our county) please run this
 
 If you run the `./build` command before without `-netfree` flag, you need to run this command:
 ```
-./build -netfree -nocache
+./build -netfree -no-cache
 ```
 
 ## Troubleshooting
