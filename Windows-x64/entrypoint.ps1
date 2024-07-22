@@ -1,5 +1,5 @@
 $ErrorActionPreference = 'Stop';
-$ProgressPreference = 'SilentlyContinue';\
+$ProgressPreference = 'SilentlyContinue';
 
 # copy project
 Copy-Item C:/src-rustdesk/** . -Recurse -Force;
