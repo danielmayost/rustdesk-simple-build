@@ -14,6 +14,11 @@ jobs:
         run: |
           git clone https://github.com/rustdesk/rustdesk.git
 
+      - name: Compile2
+        run: |
+          cd Windows-x64
+          ./compile
+
       - name: Build docker images
         run: |
           cd Windows-x64
