@@ -13,8 +13,6 @@ jobs:
       - name: Clone rustdesk
         run: |
           git clone https://github.com/rustdesk/rustdesk.git
-          cd rustdesk
-          git reset --hard 5c16a8302e6c9c1381873aff45dba1487ee51d4f
 
       - name: Build docker images
         run: |
