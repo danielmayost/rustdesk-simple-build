@@ -1,4 +1,4 @@
-name: Release
+name: Test
 
 on:
   workflow_dispatch:
@@ -14,12 +14,15 @@ jobs:
       - name: Clone rustdesk
         run: |
           git clone https://github.com/rustdesk/rustdesk.git
-
-      - name: Build docker images
+        
+      - name: Compile1
         shell: powershell
         run: |
           cd Windows-x64
-          ./build
+          ls
 
-      - name: Compile
-        run: ./compile
+      - name: Compile2
+        shell: powershell
+        run: |
+          cd Windows-x64
+          ls
