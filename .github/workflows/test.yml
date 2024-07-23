@@ -15,7 +15,7 @@ jobs:
           git clone https://github.com/rustdesk/rustdesk.git
 
       - name: Compile2
-        shell: powershell
+        shell: cmd
         run: |
           cd Windows-x64
           ./compile
