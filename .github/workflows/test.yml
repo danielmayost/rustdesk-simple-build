@@ -15,8 +15,8 @@ jobs:
           git clone https://github.com/rustdesk/rustdesk.git
 
       - name: Compile2
-        shell: cmd
         run: |
+          alias docker="winpty docker"
           cd Windows-x64
           ./compile
 
