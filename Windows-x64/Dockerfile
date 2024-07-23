@@ -90,8 +90,8 @@ RUN git clone https://github.com/rustdesk-org/RustDeskTempTopMostWindow RustDesk
     Remove-Item RustDeskTempTopMostWindow -Recurse -Force;
 
 # clone rustdesk for some restore and cache operations
-RUN git clone --single-branch --branch $env:RUSTDESK_COMMIT https://github.com/rustdesk/rustdesk.git; \
-    cd rustdesk; \
+RUN git clone https://github.com/rustdesk/rustdesk.git; \
+    cd rustdesk; git reset --hard $env:RUSTDESK_COMMIT; \
     Push-Location flutter; flutter pub get; Pop-Location; \
     ~/.cargo/bin/flutter_rust_bridge_codegen --rust-input ./src/flutter_ffi.rs --dart-output ./flutter/lib/generated_bridge.dart; \
     . $env:VCPKG_ROOT/vcpkg.exe install --triplet x64-windows-static --x-install-root=""$env:VCPKG_ROOT/installed""; \
