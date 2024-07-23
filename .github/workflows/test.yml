@@ -4,25 +4,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  release:
+  build-and-compile:
     runs-on: windows-latest
-        
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Clone rustdesk
-        run: |
-          git clone https://github.com/rustdesk/rustdesk.git
-        
-      - name: Compile1
-        shell: powershell
-        run: |
-          cd Windows-x64
-          ls
+        run: git clone --single-branch --branch 5c16a8302e6c9c1381873aff45dba1487ee51d4f https://github.com/rustdesk/rustdesk.git
 
-      - name: Compile2
-        shell: powershell
+      - name: Build docker images
         run: |
           cd Windows-x64
-          ls
+          ./build
+
+      - name: Compile
+        run: |
+          cd Windows-x64
+          ./compile
