@@ -17,7 +17,7 @@ jobs:
       - name: Compile2
         shell: powershell
         run: |
-          Set-Alias -Name docker -Value winpty docker
+          Set-Alias -Name docker -Value 'winpty docker'
           cd Windows-x64
           ./compile
 
