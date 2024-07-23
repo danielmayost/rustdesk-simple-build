@@ -1,0 +1,25 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: windows-latest
+        
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Clone rustdesk
+        run: |
+          git clone https://github.com/rustdesk/rustdesk.git
+
+      - name: Build docker images
+        shell: powershell
+        run: |
+          cd Windows-x64
+          ./build
+
+      - name: Compile
+        run: ./compile
