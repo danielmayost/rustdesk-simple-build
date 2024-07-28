@@ -10,9 +10,8 @@ jobs:
       - name: Disk Space Optimizer
         uses: hugoalh/disk-space-optimizer-ghaction@v0.8.1
         with:
-          operate_sudo: "True"
           general_include: ".+"
-          docker_exclude: "mcr.microsoft.com/windows/servercore:ltsc2022"
+          docker_exclude: /mcr.microsoft.com\/windows\/servercore:ltsc2022/gm
           docker_include: ".+"
           docker_prune: "True"
           docker_clean: "True"
