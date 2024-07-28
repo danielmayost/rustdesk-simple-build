@@ -7,17 +7,22 @@ jobs:
   build-and-compile:
     runs-on: windows-latest
     steps:
-
-      - name: Free Disk Space
-        uses: insightsengineering/disk-space-reclaimer@v1
+      - name: Disk Space Optimizer
+        uses: hugoalh/disk-space-optimizer-ghaction@v0.8.1
         with:
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          swap-storage: true
-          docker-images: true
-          tools-cache: true
+          operate_sudo: "True"
+          general_include: ".+"
+          docker_exclude: "/mcr\.microsoft\.com\/windows\/servercore:ltsc2022/gm"
+          docker_include: ".+"
+          docker_prune: "True"
+          docker_clean: "True"
+          apt_prune: "True"
+          apt_clean: "True"
+          homebrew_prune: "True"
+          homebrew_clean: "True"
+          npm_prune: "True"
+          npm_clean: "True"
+          os_swap: "True"
 
       - name: Checkout
         uses: actions/checkout@v4
