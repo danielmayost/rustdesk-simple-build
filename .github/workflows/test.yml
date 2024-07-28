@@ -12,7 +12,6 @@ jobs:
         with:
           operate_sudo: "True"
           general_include: ".+"
-          docker_exclude: "/mcr\.microsoft\.com\/windows\/servercore:ltsc2022/gm"
           docker_include: ".+"
           docker_prune: "True"
           docker_clean: "True"
