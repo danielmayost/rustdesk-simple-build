@@ -11,10 +11,6 @@ jobs:
         uses: hugoalh/disk-space-optimizer-ghaction@v0.8.1
         with:
           general_include: ".+"
-          docker_exclude: /mcr.microsoft.com\/windows\/servercore:ltsc2022/gm
-          docker_include: ".+"
-          docker_prune: "True"
-          docker_clean: "True"
           apt_prune: "True"
           apt_clean: "True"
           homebrew_prune: "True"
