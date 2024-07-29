@@ -12,6 +12,6 @@ if "%1" == "-netfree" (
     exit
 ) else (
     echo "building..."
-    docker build -t rustdesk-windows-x64 -m 4GB .
+    docker build -t rustdesk-windows-x64 -m 10GB .
     exit
 )
