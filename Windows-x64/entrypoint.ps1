@@ -1,13 +1,6 @@
 $ErrorActionPreference = 'Stop';
 $ProgressPreference = 'SilentlyContinue';
 
-# copy project
-Copy-Item C:/src-rustdesk/** . -Recurse -Force;
-
-# init cargo and flutter
-Push-Location flutter ; flutter pub get ; Pop-Location;
-~/.cargo/bin/flutter_rust_bridge_codegen --rust-input ./src/flutter_ffi.rs --dart-output ./flutter/lib/generated_bridge.dart;
-
 # build rustdesk
 Invoke-WebRequest -Uri https://github.com/rustdesk-org/rdev/releases/download/usbmmidd_v2/usbmmidd_v2.zip -OutFile usbmmidd_v2.zip;
 Expand-Archive usbmmidd_v2.zip -DestinationPath .;

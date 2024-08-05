@@ -94,9 +94,7 @@ RUN git clone https://github.com/rustdesk/rustdesk.git; \
     cd rustdesk; \
     Push-Location flutter; flutter pub get; Pop-Location; \
     ~/.cargo/bin/flutter_rust_bridge_codegen --rust-input ./src/flutter_ffi.rs --dart-output ./flutter/lib/generated_bridge.dart; \
-    . $env:VCPKG_ROOT/vcpkg.exe install --triplet x64-windows-static --x-install-root=""$env:VCPKG_ROOT/installed""; \
-    cd ..; \
-    Remove-Item rustdesk -Force -Recurse;
+    . $env:VCPKG_ROOT/vcpkg.exe install --triplet x64-windows-static --x-install-root=""$env:VCPKG_ROOT/installed"";
 
 COPY entrypoint.ps1 ./
 
